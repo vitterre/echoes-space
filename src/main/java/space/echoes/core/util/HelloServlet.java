@@ -1,4 +1,4 @@
-package space.echoes.core.echoesspace;
+package space.echoes.core.util;
 
 import java.io.*;
 
