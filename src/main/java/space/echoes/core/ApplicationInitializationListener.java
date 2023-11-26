@@ -1,9 +1,12 @@
 package space.echoes.core;
 
-import jakarta.servlet.ServletContextEvent;
-import jakarta.servlet.ServletContextListener;
-import jakarta.servlet.annotation.WebListener;
+import space.echoes.core.repository.AccountRepositoryJdbcImpl;
+import space.echoes.core.service.AccountService;
 import space.echoes.core.util.ConnectionProvider;
+
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
 
 @WebListener
 public class ApplicationInitializationListener implements ServletContextListener {
@@ -11,5 +14,7 @@ public class ApplicationInitializationListener implements ServletContextListener
     public void contextInitialized(ServletContextEvent sce) {
         ServletContextListener.super.contextInitialized(sce);
         ConnectionProvider connectionProvider = ConnectionProvider.getInstance();
+        sce.getServletContext().setAttribute("accountRepositoryJdbcImpl", new AccountRepositoryJdbcImpl(connectionProvider));
+        sce.getServletContext().setAttribute("accountService", new AccountService());
     }
 }
