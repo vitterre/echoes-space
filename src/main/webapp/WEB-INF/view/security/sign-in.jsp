@@ -4,7 +4,7 @@
 
 <t:mainLayout title="Book Detail">
   <div>${message}</div>
-  <form id="loginForm" class="form-horizontal" action="<c:url value="/signin"/>" method="POST">
+  <form id="loginForm" class="form-horizontal" action="<c:url value="/sign-in"/>" method="POST">
     <div class="form-group">
       <label class="control-label col-sm-3" for="emailAddress">E-mail</label>
       <div class="controls col-sm-9">
