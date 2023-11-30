@@ -1,3 +1,26 @@
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer{
+    margin-top: auto;
+    height: 8rem;
+}
+
+.brand-logo {
+    color: cornflowerblue;
+}
+
+.bg-black {
+    background: #222222;
+}
+
+footer {
+    width: 100%
+}
+
 /* BASE ELEMENTS */
 form{
     width:500px;
