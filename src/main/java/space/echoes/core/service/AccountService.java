@@ -1,6 +1,7 @@
 package space.echoes.core.service;
 
 import space.echoes.core.ApplicationContext;
+import space.echoes.core.exception.EmailAlreadyTakenException;
 import space.echoes.core.exception.UserAccountNotFoundException;
 import space.echoes.core.exception.UserAccountWrongCredentialsException;
 import space.echoes.core.model.AccountEntity;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
 
 public class AccountService {
     private AccountRepositoryJdbcImpl accountRepository;
@@ -50,5 +52,15 @@ public class AccountService {
         }
 
         auth(accountEntityByCredentials.get(), request, response);
+    }
+
+    public void register(String firstName, String lastName, String emailAddress, String password) throws EmailAlreadyTakenException {
+        final Optional<AccountEntity> accountEntityByEmailAddress = accountRepository.findByEmailAddress(emailAddress);
+
+        if (accountEntityByEmailAddress.isPresent()) {
+            throw new EmailAlreadyTakenException();
+        }
+        AccountEntity account = new AccountEntity(UUID.randomUUID(), firstName, lastName, emailAddress, password);
+        accountRepository.save(account);
     }
 }

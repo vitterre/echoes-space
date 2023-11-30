@@ -1,6 +1,7 @@
 package space.echoes.core.repository;
 
 import space.echoes.core.mapper.RowMapper;
+import space.echoes.core.model.AccountEntity;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,4 +22,6 @@ public interface Repository<T> {
 
         return entities;
     }
+
+    void save(T entity);
 }

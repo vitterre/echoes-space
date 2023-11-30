@@ -25,7 +25,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-5"> <!-- Добавлен класс me-3 для отступа справа -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sign In</a>
+                    <a class="nav-link" href="<c:url value="/sign-in"/>">Sign In</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Articles</a>

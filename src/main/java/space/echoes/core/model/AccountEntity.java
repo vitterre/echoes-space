@@ -1,5 +1,7 @@
 package space.echoes.core.model;
 
+import lombok.Builder;
+
 import java.util.Objects;
 import java.util.UUID;
 

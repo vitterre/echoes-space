@@ -16,7 +16,7 @@
 </head>
 <body class="bg-black">
 <%@include file="nav.jsp" %>
-<div class="container d-flex align-items-center justify-content-center">
+<div class="container d-flex align-items-center justify-content-center content">
   <jsp:doBody/>
 </div>
 <%@include file="footer.jsp" %>

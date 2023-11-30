@@ -29,6 +29,9 @@
       <div class="text-center">
         <button type="submit" class="btn btn-outline-info mt-3 w-50">Sign in</button>
       </div>
+      <div class="text-center mt-2">
+        <a class="link-info" href="<c:url value="/register"/>">Don't have an account yet? Register</a>
+      </div>
     </form>
   </div>
 </t:mainLayout>
