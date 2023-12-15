@@ -3,8 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <t:mainLayout title="echoes.space | Sign In">
-
-  <div class="pt-3 px-5 pb-5 mt-5 w-min-content border border-secondary rounded">
+  <div class="pt-3 px-5 pb-5 w-min-content border border-secondary rounded" style="margin-top: 8rem">
     <div class="text-center">
       <h1 class="text-white">Sign In</h1>
     </div>

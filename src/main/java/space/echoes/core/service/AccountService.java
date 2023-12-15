@@ -63,4 +63,14 @@ public class AccountService {
         AccountEntity account = new AccountEntity(UUID.randomUUID(), firstName, lastName, emailAddress, password);
         accountRepository.save(account);
     }
+
+    public AccountEntity getByUuid(UUID accountUuid) throws UserAccountNotFoundException {
+        Optional<AccountEntity> accountEntityOptional = accountRepository.findByUuid(accountUuid);
+
+        if (accountEntityOptional.isEmpty()) {
+            throw new UserAccountNotFoundException(accountUuid);
+        }
+
+        return accountEntityOptional.get();
+    }
 }

@@ -9,10 +9,18 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
 
 public class AccountRepositoryJdbcImpl implements Repository<AccountEntity> {
     private ConnectionProvider connectionProvider;
     private RowMapper<AccountEntity> rowMapper;
+
+
+    //language=sql
+    private final String SQL_GET_BY_UUID = """
+            select * from account where uuid = ?
+            """;
 
     //language=sql
     private final String SQL_GET_BY_EMAIL_ADDRESS = """
@@ -54,6 +62,23 @@ public class AccountRepositoryJdbcImpl implements Repository<AccountEntity> {
         }
     }
 
+    public Optional<AccountEntity> findByUuid(UUID uuid) {
+        Optional<AccountEntity> accountEntityOptional;
+
+        try (final PreparedStatement preparedStatement =
+                     connectionProvider.getConnection().prepareStatement(SQL_GET_BY_UUID)) {
+            preparedStatement.setObject(1, uuid);
+
+            List<AccountEntity> accountList = extract(rowMapper, preparedStatement.executeQuery());
+
+            accountEntityOptional = accountList.isEmpty() ? Optional.empty() : Optional.of(accountList.get(0));
+
+            return accountEntityOptional;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public Optional<AccountEntity> findByEmailAddress(String emailAddress) {
         Optional<AccountEntity> accountEntityOptional;
 
@@ -71,7 +96,6 @@ public class AccountRepositoryJdbcImpl implements Repository<AccountEntity> {
         }
     }
 
-    @Override
     public void save(AccountEntity entity) {
         try (final PreparedStatement preparedStatement =
                      connectionProvider.getConnection().prepareStatement(SQL_SAVE_ACCOUNT)) {

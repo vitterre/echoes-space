@@ -4,7 +4,7 @@
 
 <t:mainLayout title="echoes.space | Register">
 
-  <div class="pt-3 px-5 pb-5 mt-2 w-min-content border border-secondary rounded">
+  <div class="pt-3 px-5 pb-5 w-min-content border border-secondary rounded" style="margin-top: 8rem">
     <div class="text-center">
       <h1 class="text-white">Register</h1>
     </div>
