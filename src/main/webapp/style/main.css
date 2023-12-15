@@ -1,19 +1,80 @@
-body{
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
+
 /*footer{*/
 /*    margin-top: auto;*/
 /*    height: 8rem;*/
 /*}*/
 
 footer {
-    /*position: fixed;*/
+    position: absolute;
+    /*top: 100vh;*/
     height: 8rem;
     bottom: 0;
+    left: 0;
+    right: 0;
     width: 100%;
 }
+
+.md-display img {
+    max-width: 100%;
+}
+
+#articles {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.article-item {
+    box-sizing: border-box;
+    margin: 15px;
+    padding: 0;
+    width: calc(100% / 12 * 4 - 30px);
+    text-decoration: none;
+}
+.article-item:hover {
+    box-shadow: 0 0 11px rgba(0, 0, 0, 0.37);
+}
+
+@media screen and (max-width: 980px) {
+    .article-item {
+        width: calc(100% / 12 * 4 - 30px);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .article-item {
+        width: calc(100% / 12 * 12 - 30px);
+    }
+}
+
+.article-create {
+    width: 60%;
+}
+
+.article-view {
+    width: 70%;
+    text-align: justify;
+}
+
+.article-summary {
+    font-family: 'SF Mono', monospace;
+    font-size: 14px;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    color: #b6b6b6;
+}
+
+.viewing-article-data {
+    color: cornflowerblue;
+}
+
+
+/*#articles {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    justify-content: space-evenly;*/
+/*    gap: 10px*/
+/*}*/
 
 .brand-logo {
     color: cornflowerblue;
@@ -23,9 +84,6 @@ footer {
     background: #222222;
 }
 
-footer {
-    width: 100%
-}
 
 /* BASE ELEMENTS */
 form{

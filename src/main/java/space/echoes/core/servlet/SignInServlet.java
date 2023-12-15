@@ -37,22 +37,22 @@ public class SignInServlet extends HttpServlet {
         final String emailAddress = req.getParameter("emailAddress");
         final String password = req.getParameter("password");
 
-        if (Objects.nonNull(emailAddress) &&
-                Objects.nonNull(password) &&
-                !emailAddress.isBlank() &&
-                !password.isBlank()) {
+        if (Validator.isStringValid(emailAddress)
+                && Validator.isStringValid(password)) {
             try {
                 if (!Validator.isEmailValid(emailAddress)) {
                     throw new InvalidEmailAddressException();
                 }
                 accountService.signIn(emailAddress, password, req, resp);
-                getServletContext().getRequestDispatcher("/WEB-INF/view/index.jsp").forward(req, resp);
+                resp.sendRedirect(req.getContextPath() + "/article/list");
+                return;
             } catch (UserAccountNotFoundException | UserAccountWrongCredentialsException | InvalidEmailAddressException exception) {
                 req.setAttribute("message", exception.getMessage());
             }
         } else {
             req.setAttribute("message", "Fill all the fields");
         }
+        getServletContext().getRequestDispatcher("/WEB-INF/view/security/sign-in.jsp").forward(req, resp);
     }
 
 

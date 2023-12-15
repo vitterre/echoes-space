@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public interface Repository<T> {
     default List<T> extract(RowMapper<T> rowMapper, ResultSet resultSet) throws SQLException {
@@ -22,6 +23,4 @@ public interface Repository<T> {
 
         return entities;
     }
-
-    void save(T entity);
 }
