@@ -13,7 +13,7 @@ import java.io.IOException;
 
 @WebFilter("/*")
 public class AuthFilter extends HttpFilter {
-    private static final String[] securedPaths = new String[]{ "/article/create" };
+    private static final String[] securedPaths = new String[]{ "/article/create", "/podcast/create" };
     private AccountService accountService;
 
     @Override

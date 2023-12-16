@@ -51,6 +51,11 @@ footer {
     width: 60%;
 }
 
+
+.podcast-create {
+    width: 60%;
+}
+
 .article-view {
     width: 70%;
     text-align: justify;
