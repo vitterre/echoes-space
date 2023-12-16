@@ -8,9 +8,7 @@ import space.echoes.core.util.ConnectionProvider;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 public class PodcastRepositoryJdbcImpl implements Repository<PodcastEntity> {
     private ConnectionProvider connectionProvider;
@@ -18,8 +16,8 @@ public class PodcastRepositoryJdbcImpl implements Repository<PodcastEntity> {
 
     //language=sql
     private final String SQL_SAVE_PODCAST = """
-            insert into podcast(uuid, title, summary, upload_date, file_path)
-                values (?, ?, ?, ?, ?)
+            insert into podcast(uuid, title, summary, upload_date, file_path, voices)
+                values (?, ?, ?, ?, ?, ?)
             """;
 
     //language=sql
@@ -27,6 +25,12 @@ public class PodcastRepositoryJdbcImpl implements Repository<PodcastEntity> {
             select *
                 from podcast
             where uuid = ?
+            """;
+
+    //language=sql
+    private final String SQL_GET_ALL_PODCASTS = """
+            select *
+                from podcast
             """;
 
     public PodcastRepositoryJdbcImpl(ConnectionProvider connectionProvider) {
@@ -42,6 +46,7 @@ public class PodcastRepositoryJdbcImpl implements Repository<PodcastEntity> {
             preparedStatement.setString(3, podcastEntity.getSummary());
             preparedStatement.setObject(4, podcastEntity.getUploadDate());
             preparedStatement.setString(5, podcastEntity.getFilePath());
+            preparedStatement.setString(6, podcastEntity.getVoices());
 
             preparedStatement.executeUpdate();
 
@@ -62,6 +67,17 @@ public class PodcastRepositoryJdbcImpl implements Repository<PodcastEntity> {
             }
 
             return Optional.of(podcastEntities.get(0));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Set<PodcastEntity> getAll() {
+        try (final PreparedStatement preparedStatement =
+                connectionProvider.getConnection().prepareStatement(SQL_GET_ALL_PODCASTS)) {
+            List<PodcastEntity> podcasts = extract(rowMapper, preparedStatement.executeQuery());
+
+            return new HashSet<>(podcasts);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

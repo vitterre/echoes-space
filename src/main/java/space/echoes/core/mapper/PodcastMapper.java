@@ -18,6 +18,7 @@ public class PodcastMapper implements RowMapper<PodcastEntity> {
                 .summary(rs.getString("summary"))
                 .uploadDate((Timestamp) rs.getObject("upload_date"))
                 .filePath(rs.getString("file_path"))
+                .voices(rs.getString("voices"))
                 .build();
     }
 }

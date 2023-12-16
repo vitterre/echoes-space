@@ -36,6 +36,9 @@ public class PodcastListenServlet extends HttpServlet {
         req.getSession().setAttribute("listeningPodcast",
                 podcastEntity);
 
+        String[] voices = podcastEntity.getVoices().split(", ");
+        req.getSession().setAttribute("podcastVoices", voices);
+
         getServletContext().getRequestDispatcher("/WEB-INF/view/podcast/listen-podcast.jsp").forward(req, resp);
     }
 }

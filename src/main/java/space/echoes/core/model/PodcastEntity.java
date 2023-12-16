@@ -19,5 +19,6 @@ public class PodcastEntity {
     private String title;
     private String summary;
     private Timestamp uploadDate;
+    private String voices;
     private String filePath;
 }

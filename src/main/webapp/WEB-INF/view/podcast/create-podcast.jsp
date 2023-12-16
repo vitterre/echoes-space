@@ -26,6 +26,12 @@
         </div>
       </div>
       <div class="form-group">
+        <label class="control-label text-white" for="voices">Voices (use commas and spaces)</label>
+        <div class="controls">
+          <textarea id="voices" name="voices" class="form-control bg-dark text-white"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
         <label class="control-label text-white" for="podcastFile">Select MP3 file</label>
         <div class="controls">
           <input type="file" id="podcastFile" name="podcastFile" class="form-control bg-dark text-white"/>

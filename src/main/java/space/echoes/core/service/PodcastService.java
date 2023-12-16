@@ -8,6 +8,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 public class PodcastService {
@@ -21,13 +22,14 @@ public class PodcastService {
                         .getAttribute("podcastRepositoryJdbcImpl");
     }
 
-    public PodcastEntity save(String title, String summary, String filePath) {
+    public PodcastEntity save(String title, String summary, String voices, String filePath) {
         return podcastRepository.save(PodcastEntity.builder()
                 .uuid(UUID.randomUUID())
                 .title(title)
                 .summary(summary)
                 .filePath(filePath)
                 .uploadDate(new Timestamp(System.currentTimeMillis()))
+                .voices(voices)
                 .build()
         );
     }
@@ -40,5 +42,9 @@ public class PodcastService {
         }
 
         return podcastEntityOptional.get();
+    }
+
+    public Set<PodcastEntity> getAll() {
+        return podcastRepository.getAll();
     }
 }

@@ -37,10 +37,11 @@ public class PodcastCreateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         final String title = req.getParameter("title");
         final String summary = req.getParameter("summary");
+        final String voices = req.getParameter("voices");
         final Part podcastFilePart = req.getPart("podcastFile");
 
         final String fileName = UUID.randomUUID().toString() + ".mp3";
-        final String filePath = "/Users/hero/Projects/echoes-space/" + fileName;
+        final String filePath = "/Users/hero/.echoes-space-cdn/audio/" + fileName;
 
         if (Validator.isStringValid(title)
                 && Validator.isStringValid(summary)
@@ -48,7 +49,7 @@ public class PodcastCreateServlet extends HttpServlet {
             try (InputStream fileContent = podcastFilePart.getInputStream();
                  OutputStream outputStream = new FileOutputStream(filePath)) {
                 IOUtils.copy(fileContent, outputStream);
-                PodcastEntity podcastEntity = podcastService.save(title, summary, filePath);
+                PodcastEntity podcastEntity = podcastService.save(title, summary, voices, filePath);
                 resp.sendRedirect(req.getContextPath() + "/podcast/listen?podcast-uuid=" + podcastEntity.getUuid());
             }
         }

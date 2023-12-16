@@ -5,7 +5,8 @@
 <t:mainLayout title="echoes.space | Articles">
   <div class="pt-3 px-5 pb-5 mx-auto w-75" style="margin-top: 5rem">
     <h1 class="text-white text-center">Articles</h1>
-    <div id="articles">
+    <a class="link-info" href="<c:url value="/article/create"/>" style="margin-left: 1rem">Publish your own</a>
+    <div id="articles" class="mt-2">
       <c:forEach items="${articles}" var="article">
 <%--        <a href="<c:url value="/article/view?article-uuid=${article.getUuid()}"/>" style="text-decoration: none" class="article-item">--%>
           <a href="<c:url value="/article/view?article-uuid=${article.getUuid()}"/>" class="card text-white bg-dark article-list-element article-item" id="article-list-element">
