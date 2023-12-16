@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="<c:url value="/style/main.css"/>">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link href="<c:url value="/js/bower_components/bootstrap-markdown-editor/dist/css/bootstrap-markdown-editor.css"/>" rel="stylesheet">
   <link href="<c:url value="/style/create-article-view.css"/>" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
 </head>
@@ -33,26 +32,5 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
 <script type="module" src="https://md-block.verou.me/md-block.js"></script>
-<%--<script src="<c:url value="/js/bower_components/jquery/dist/jquery.min.js"/>"></script>--%>
-<%--<script src="<c:url value="/js/bower_components/bootstrap/dist/js/bootstrap.min.js"/>"></script>--%>
-<%--<script src="<c:url value="/js/bower_components/ace-builds/src-min/ace.js"/>"></script>--%>
-<%--<script src="<c:url value="/js/bower_components/bootstrap-markdown-editor/dist/js/bootstrap-markdown-editor.js"/>"></script>--%>
-<%--<script>--%>
-<%--    $('#articleBody').markdownEditor({--%>
-<%--        preview: true,--%>
-<%--        onPreview: function (content, callback) {--%>
-<%--            $.ajax({--%>
-<%--                url: './create-article.jsp',--%>
-<%--                type: 'POST',--%>
-<%--                dataType: 'html',--%>
-<%--                data: {--%>
-<%--                    content: content--%>
-<%--                }--%>
-<%--            }).done(function(result) {--%>
-<%--                callback(result)--%>
-<%--            })--%>
-<%--        }--%>
-<%--    });--%>
-<%--</script>--%>
 </body>
 </html>

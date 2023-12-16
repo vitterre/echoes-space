@@ -16,7 +16,7 @@
                     <a class="nav-link" href="<c:url value="/podcast/list"/>">Podcasts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="<c:url value="/about"/>">About</a>
                 </li>
             </ul>
         </div>

@@ -8,15 +8,13 @@
     <a class="link-info" href="<c:url value="/article/create"/>" style="margin-left: 1rem">Publish your own</a>
     <div id="articles" class="mt-2">
       <c:forEach items="${articles}" var="article">
-<%--        <a href="<c:url value="/article/view?article-uuid=${article.getUuid()}"/>" style="text-decoration: none" class="article-item">--%>
-          <a href="<c:url value="/article/view?article-uuid=${article.getUuid()}"/>" class="card text-white bg-dark article-list-element article-item" id="article-list-element">
-            <div id="article-img-grad" class="card-img-top" style="height: 10rem"></div>
-            <div class="card-body">
-              <h5 class="card-title">${article.getTitle()}</h5>
-              <p class="card-text" style="color: #b6b6b6">${article.getSummary()}</p>
-            </div>
-          </a>
-<%--        </a>--%>
+        <a href="<c:url value="/article/view?article-uuid=${article.getUuid()}"/>" class="card text-white bg-dark article-list-element article-item" id="article-list-element">
+          <div id="article-img-grad" class="card-img-top" style="height: 10rem"></div>
+          <div class="card-body">
+            <h5 class="card-title">${article.getTitle()}</h5>
+            <p class="card-text" style="color: #b6b6b6">${article.getSummary()}</p>
+          </div>
+        </a>
       </c:forEach>
     </div>
   </div>

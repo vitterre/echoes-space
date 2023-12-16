@@ -2,7 +2,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<t:mainLayout title="echoes.space | Write article">
+<t:mainLayout title="echoes.space | Upload podcast">
   <div class="pt-3 px-5 pb-5 border border-secondary rounded mx-auto podcast-create" style="margin-top: 8rem">
     <div class="text-center">
       <h1 id="update-page-page-title" class="text-white">Upload podcast</h1>
