@@ -48,7 +48,7 @@ public class PodcastCreateServlet extends HttpServlet {
                 && podcastFilePart.getSize() > 0) {
             try (InputStream fileContent = podcastFilePart.getInputStream();
                  OutputStream outputStream = new FileOutputStream(filePath)) {
-                IOUtils.copy(fileContent, outputStream);
+                fileContent.transferTo(outputStream);
                 PodcastEntity podcastEntity = podcastService.save(title, summary, voices, filePath);
                 resp.sendRedirect(req.getContextPath() + "/podcast/listen?podcast-uuid=" + podcastEntity.getUuid());
             }
